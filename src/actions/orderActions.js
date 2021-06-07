@@ -30,6 +30,7 @@ import {
 
 import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
 
+const base_url = "https://myshop-mw.herokuapp.com";
 
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
@@ -49,7 +50,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(
-            `/api/orders/add/`,
+            base_url+`/api/orders/add/`,
             order,
             config
         )
@@ -96,7 +97,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `/api/orders/${id}/`,
+            base_url+`/api/orders/${id}/`,
             config
         )
 
@@ -136,7 +137,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/orders/${id}/pay/`,
+            base_url+`/api/orders/${id}/pay/`,
             paymentResult,
             config
         )
@@ -176,7 +177,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/orders/${order._id}/deliver/`,
+            base_url+`/api/orders/${order._id}/deliver/`,
             {},
             config
         )
@@ -217,7 +218,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `/api/orders/myorders/`,
+            base_url+`/api/orders/myorders/`,
             config
         )
 
@@ -256,7 +257,7 @@ export const listOrders = () => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `/api/orders/`,
+            base_url+`/api/orders/`,
             config
         )
 
